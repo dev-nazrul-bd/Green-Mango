@@ -29,15 +29,15 @@ jobs:
         run: npm run build
 
       - name: Deploy to Firebase Hosting via Service Account
-        if: ${{ secrets.FIREBASE_SERVICE_ACCOUNT != '' }}
+        if: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: '${{ secrets.TOKEN || secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           projectId: greenmango
 
       - name: Deploy to Firebase Hosting via CLI Token
-        if: ${{ secrets.TOKEN != '' && secrets.FIREBASE_SERVICE_ACCOUNT == '' }}
+        if: ${{ secrets.TOKEN && !secrets.FIREBASE_SERVICE_ACCOUNT }}
         run: npx firebase-tools deploy --only hosting --project greenmango
         env:
           FIREBASE_TOKEN: ${{ secrets.TOKEN }}
