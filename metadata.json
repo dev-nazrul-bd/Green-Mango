@@ -1,0 +1,6 @@
+{
+  "name": "Green Mango 🥭",
+  "description": "প্রিমিয়াম প্যারালাক্স ই-কমার্স ওয়েবসাইট — তাজা আম ও আমের তৈরি খাঁটি পণ্যের সমাহার",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

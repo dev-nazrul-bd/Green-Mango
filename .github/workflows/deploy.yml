@@ -1,0 +1,39 @@
+# GitHub Actions workflow to auto-deploy the Green Mango application.
+# Configured specifically to deploy to greenmango.web.app (Site ID: greenmango).
+
+name: Deploy to Firebase Hosting (greenmango)
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci || npm install
+
+      - name: Build React Application
+        run: npm run build
+
+      - name: Deploy to Firebase Hosting
+        # This GitHub Action deploys specifically to the "greenmango" site configured in firebase.json
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
+          projectId: greenmango
+        # Alternative pure CLI fallback if standard TOKEN is preferred instead of Service Account:
+        # run: npx firebase-tools deploy --only hosting:greenmango --token "${{ secrets.FIREBASE_TOKEN }}"
