@@ -1,52 +1,41 @@
-# GitHub Actions workflow to auto-deploy the Green Mango application.
-# Configured specifically to deploy to greenmango.web.app (Site ID: greenmango).
-
-name: Deploy to Firebase Hosting (greenmango)
+name: Deploy to Firebase Hosting
 
 on:
   push:
     branches:
-      - main
-      - master
+      - main # আপনার মেইন ব্রাঞ্চের নাম যদি 'master' হয়, তবে এখানে master লিখবেন
 
 jobs:
-  build_and_deploy:
+  deploy:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.TOKEN || secrets.GITHUB_TOKEN }}
 
-      - name: Setup Node.js
+    steps:
+      # ১. গিটহাব থেকে কোড চেকআউট করা
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # ২. নোড জেএস সেটআপ করা
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 20 # আপনার প্রোজেক্টের নোড ভার্সন অনুযায়ী পরিবর্তন করতে পারেন
           cache: 'npm'
 
-      - name: Install Dependencies
-        run: npm ci || npm install
+      # ৩. ডিপেন্ডেন্সি ইনস্টল করা
+      - name: Install dependencies
+        run: npm ci # অথবা আপনার প্রোজেক্ট অনুযায়ী npm install / yarn install
 
-      - name: Build React Application
-        run: npm run build
+      # ৪. প্রোজেক্ট বিল্ড করা (প্রোজেক্ট যদি React/Vite/Next.js হয়)
+      - name: Build project
+        run: npm run build # আপনার package.json-এ বিল্ড কমান্ড যা আছে
 
-      - name: Deploy to Firebase Hosting via Service Account
-        if: "secrets.FIREBASE_SERVICE_ACCOUNT != '' && contains(secrets.FIREBASE_SERVICE_ACCOUNT, 'type')"
+      # ৫. ফায়ারবেস হোস্টিংয়ে ডেপ্লয় করা
+      - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: ${{ secrets.TOKEN || secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
-          projectId: greenmango
-
-      - name: Deploy to Firebase Hosting via Firebase CLI Token
-        if: "secrets.FIREBASE_SERVICE_ACCOUNT != '' && !contains(secrets.FIREBASE_SERVICE_ACCOUNT, 'type')"
-        run: npx firebase-tools deploy --only hosting --project greenmango
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: '' # আমরা টোকেন ব্যবহার করছি, তাই এটি খালি থাকবে
+          projectId: my-project-c71d4 # আপনার ফায়ারবেস প্রোজেক্ট আইডি
+          channelId: live # সরাসরি মেইন সাইটে লাইভ করার জন্য
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
-
-      - name: Deploy to Firebase Hosting via Repository Custom TOKEN
-        if: "secrets.TOKEN != '' && secrets.FIREBASE_SERVICE_ACCOUNT == ''"
-        run: npx firebase-tools deploy --only hosting --project greenmango
-        env:
-          FIREBASE_TOKEN: ${{ secrets.TOKEN }}
-
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
