@@ -319,93 +319,20 @@ export default function App() {
   }, [products, activeCategory, searchQuery]);
 
   if (isPathAdmin) {
-    const isUserAdmin = currentUser && currentUser.role === 'admin';
-
     return (
       <div className="min-h-screen bg-stone-100 text-emerald-950 font-sans flex flex-col items-center justify-center p-4">
-        {isUserAdmin ? (
-          <div className="w-full max-w-5xl bg-white shadow-2xl rounded-3xl overflow-hidden border border-emerald-100 animate-in zoom-in-95 duration-400">
-            <AdminPanel
-              language={selectedLanguage}
-              products={products}
-              orders={orders}
-              onClose={() => { window.location.href = '/'; }}
-              onUpdateProduct={handleAdminUpdateProduct}
-              onAddProduct={handleAdminAddProduct}
-              onDeleteProduct={handleAdminDeleteProduct}
-              onUpdateOrderStatus={handleUpdateOrderStatus}
-            />
-          </div>
-        ) : (
-          <div className="w-full max-w-md bg-white border border-emerald-100/80 rounded-3xl p-8 shadow-2xl relative">
-            <div className="text-center font-sans space-y-4">
-              <span className="text-5xl block select-none mb-2">🛡️</span>
-              <h2 className="text-emerald-950 font-black text-xl">
-                {selectedLanguage === 'bn' ? 'গ্রিন ম্যাঙ্গো অ্যাডমিন পোর্টাল' : 'Green Mango Admin Workspace'}
-              </h2>
-              <p className="text-[10px] uppercase font-bold text-emerald-600 tracking-widest leading-none">
-                MANUALLY PERMITTED ACCESS ONLY
-              </p>
-              
-              {currentUser ? (
-                <div className="bg-red-50 text-red-700 p-4 rounded-2xl text-xs space-y-3 border border-red-150">
-                  <p className="font-extrabold leading-normal">
-                    {selectedLanguage === 'bn' 
-                      ? `দুঃখিত! আপনার লগইনকৃত ইমেইলটি (${currentUser.email}) অ্যাডমিন ড্যাশবোর্ডের জন্য অনুমোদিত নয়।` 
-                      : `Access Denied! The logged-in email (${currentUser.email}) is not of an authorized administrator.`}
-                  </p>
-                  <p className="font-normal text-[11px]">
-                    {selectedLanguage === 'bn' 
-                      ? 'অনুগ্রহ করে অনুমোদিত অ্যাডমিন ইমেইল দিয়ে পুনরায় গুগল লগইন সম্পন্ন করুন।' 
-                      : 'Please sign out and sign back in with an authorized corporate account.'}
-                  </p>
-                  <button
-                    onClick={handleLogout}
-                    className="w-full py-2 bg-red-650 hover:bg-red-755 text-white rounded-xl font-bold font-sans cursor-pointer transition-all"
-                  >
-                    {selectedLanguage === 'bn' ? 'সাইন আউট করুন' : 'Sign Out'}
-                  </button>
-                </div>
-              ) : (
-                <div className="pt-4 space-y-4">
-                  <div className="bg-amber-50 text-amber-800 p-4 rounded-2xl text-left border border-amber-100 space-y-1 text-xs">
-                    <span className="font-bold block">⚠️ এডমিন সতর্কতা:</span>
-                    <span className="leading-relaxed block font-normal text-[11.5px]">
-                      {selectedLanguage === 'bn' 
-                        ? 'এটি গ্রিন ম্যাঙ্গো কর্মকর্তাদের জন্য সংরক্ষিত ডোমেন। এখানে ডেমো বাইপাস বা সিমুলেশন বাটন নেই। শুধুমাত্র ফায়ারবেইসে নিবন্ধিত বা ডেভলপার নজরুলের যোগকৃত অ্যাডমিন ইমেইল দিয়েই গুগল সাইন-ইন সম্ভব।' 
-                        : 'This page is standard corporate access. Only authorized developer or corporate emails set in Firebase are permitted.'}
-                    </span>
-                  </div>
-
-                  <button
-                    onClick={handleGoogleLogin}
-                    className="w-full py-4 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 font-extrabold text-xs flex items-center justify-center gap-3 transition-transform active:scale-97 cursor-pointer shadow-xs"
-                  >
-                    <LogIn className="w-5 h-5 text-red-550" />
-                    <span>Google দিয়ে ফায়ারবেস অথ লগইন</span>
-                  </button>
-                </div>
-              )}
-
-              <div className="pt-6 border-t border-slate-100 flex justify-between text-xs font-bold">
-                <button
-                  onClick={() => { setSelectedLanguage(selectedLanguage === 'bn' ? 'en' : 'bn'); }}
-                  className="text-emerald-700 hover:text-emerald-950 cursor-pointer"
-                >
-                  {selectedLanguage === 'bn' ? 'English' : 'বাংলা'}
-                </button>
-                
-                <a
-                  href="/"
-                  className="text-emerald-700 hover:text-emerald-955 flex items-center gap-1 transition-all"
-                >
-                  <span>{selectedLanguage === 'bn' ? '⬅️ মূল ওয়েবসাইটে ফিরুন' : '⬅️ Return to Storefront'}</span>
-                </a>
-              </div>
-
-            </div>
-          </div>
-        )}
+        <div className="w-full max-w-5xl bg-white shadow-2xl rounded-3xl overflow-hidden border border-emerald-100">
+          <AdminPanel
+            language={selectedLanguage}
+            products={products}
+            orders={orders}
+            onClose={() => { window.location.href = '/'; }}
+            onUpdateProduct={handleAdminUpdateProduct}
+            onAddProduct={handleAdminAddProduct}
+            onDeleteProduct={handleAdminDeleteProduct}
+            onUpdateOrderStatus={handleUpdateOrderStatus}
+          />
+        </div>
       </div>
     );
   }

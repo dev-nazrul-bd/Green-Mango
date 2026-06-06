@@ -32,7 +32,7 @@ jobs:
         # This GitHub Action deploys specifically to the "greenmango" site configured in firebase.json
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: '${{ secrets.TOKEN }}'
+          repoToken: '${{ secrets.TOKEN || secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
           projectId: greenmango
         # Alternative pure CLI fallback if standard TOKEN is preferred instead of Service Account:

@@ -107,6 +107,16 @@ export default function Header({
         {/* Navigation & Controls Actions (Desktop) */}
         <div className="hidden lg:flex items-center gap-6">
           
+          {/* Admin Panel (Accessible to everyone, no account check) */}
+          <button
+            onClick={onAdminToggle}
+            className="flex items-center gap-1.5 rounded-full bg-amber-500 hover:bg-amber-600 text-white px-4 py-1.5 text-xs font-bold shadow-xs transition-all cursor-pointer"
+            id="admin-panel-btn"
+          >
+            <Settings className="h-3.5 w-3.5" />
+            <span>{language === 'bn' ? 'অ্যাডমিন প্যানেল' : 'Admin Panel'}</span>
+          </button>
+
           {/* Language Selector */}
           <button
             onClick={onLanguageToggle}
@@ -117,18 +127,6 @@ export default function Header({
             <Globe className="h-3.5 w-3.5 text-emerald-600" />
             <span>{language === 'bn' ? 'English' : 'বাংলা'}</span>
           </button>
-
-          {/* Admin Panel access */}
-          {currentUser && (currentUser.role === 'admin' || isAdmin) && (
-            <button
-              onClick={onAdminToggle}
-              className="flex items-center gap-1.5 rounded-full bg-amber-500 hover:bg-amber-600 text-white px-4 py-1.5 text-xs font-semibold shadow-xs transition-all cursor-pointer animate-pulse"
-              id="admin-panel-btn"
-            >
-              <Settings className="h-3.5 w-3.5" />
-              <span>{t.admin}</span>
-            </button>
-          )}
 
           {/* Profile Status */}
           {currentUser ? (
@@ -231,18 +229,18 @@ export default function Header({
           </div>
 
           <div className="flex flex-col gap-2 font-sans pt-1">
-            {currentUser && (currentUser.role === 'admin' || isAdmin) && (
-              <button
-                onClick={() => {
-                  onAdminToggle();
-                  setMobileMenuOpen(false);
-                }}
-                className="flex items-center gap-2 rounded-lg bg-amber-50 px-3 py-2 text-xs font-bold text-amber-800"
-              >
-                <Settings className="h-4 w-4" />
-                <span>{t.admin} (অ্যাডমিন ড্যাশবোর্ড)</span>
-              </button>
-            )}
+            {/* Mobile Admin Toggle (No account needed) */}
+            <button
+              onClick={() => {
+                onAdminToggle();
+                setMobileMenuOpen(false);
+              }}
+              className="flex w-full items-center justify-center gap-2 rounded-full bg-amber-500 py-2.5 text-xs font-bold text-white cursor-pointer"
+              id="mobile-admin-panel-btn"
+            >
+              <Settings className="h-4 w-4" />
+              <span>{language === 'bn' ? 'অ্যাডমিন প্যানেল' : 'Admin Panel'}</span>
+            </button>
 
             {currentUser ? (
               <div className="flex items-center justify-between rounded-lg bg-emerald-50/50 px-3 py-2.5">

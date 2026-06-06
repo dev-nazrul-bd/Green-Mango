@@ -9,6 +9,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     description: 'রাজশাহীর বাগান থেকে সরাসরি সংগৃহীত, অত্যন্ত সুস্বাদু এবং আঁশহীন মিষ্টি হিমসাগর আম। প্রাকৃতিকভাবে পাকানো।',
     descriptionEn: 'Directly sourced from Rajshahi orchards, extremely sweet, fiberless, and premium grade. Naturally ripened.',
     price: 320,
+    discountPrice: 280,
     unit: '১ কেজি',
     image: 'https://images.unsplash.com/photo-1553279768-865429fa0078?q=80&w=800&auto=format&fit=crop',
     rating: 4.9,
@@ -37,6 +38,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     description: 'রংপুরের বিখ্যাত হাঁড়ীভাঙ্গা আম। সুমিষ্ট স্বাদ, গোল আকৃতি এবং আঁশবিহীন ঘন আঁটিযুক্ত আম।',
     descriptionEn: 'The famous Haribhanga mango of Rangpur. Exceptionally sweet, round shape, and absolutely fiber-free.',
     price: 290,
+    discountPrice: 250,
     unit: '১ কেজি',
     image: 'https://images.unsplash.com/photo-1591189863430-ab87e120f312?q=80&w=800&auto=format&fit=crop',
     rating: 4.7,
@@ -56,6 +58,34 @@ export const INITIAL_PRODUCTS: Product[] = [
     stock: 30
   },
   {
+    id: 'amrapali-sweet',
+    name: 'রাজকীয় আম্রপালি আম',
+    nameEn: 'Royal Amrapali Mango',
+    category: 'fresh-mango',
+    description: 'নাককাটা বা আম্রপালি আম তার অতি মিষ্টি স্বাদ এবং গাঢ় রেশমি সুবাসের জন্য অত্যন্ত জনপ্রিয়।',
+    descriptionEn: 'Royal Amrapali Mango known for its deep orange flesh, unparalleled sweetness, and intense aroma.',
+    price: 230,
+    discountPrice: 199,
+    unit: '১ কেজি',
+    image: 'https://images.unsplash.com/photo-1605001011156-cbf0b0f67a51?q=80&w=800&auto=format&fit=crop',
+    rating: 4.9,
+    stock: 80,
+    isPopular: true
+  },
+  {
+    id: 'fazli-jumbo',
+    name: 'বিশাল সাইজের ফজলি আম',
+    nameEn: 'Jumbo Fazli Mango',
+    category: 'fresh-mango',
+    description: 'আকারে বড় এবং মাংসল অংশযুক্ত সুমিষ্ট ফজলি আম। আমপ্রেমীদের জন্য অন্যতম সেরা পছন্দ।',
+    descriptionEn: 'Jumbo-sized sweet Fazli mango with abundant pulp. Perfect for both sliced eating and making fresh desserts.',
+    price: 270,
+    unit: '১ কেজি',
+    image: 'https://images.unsplash.com/photo-1553279768-865429fa0078?q=80&w=800&auto=format&fit=crop',
+    rating: 4.5,
+    stock: 40
+  },
+  {
     id: 'pure-mango-smoothie',
     name: '১০০% খাঁটি ম্যাঙ্গো স্মুদি',
     nameEn: '100% Pure Mango Smoothie',
@@ -63,11 +93,25 @@ export const INITIAL_PRODUCTS: Product[] = [
     description: 'কোনো কৃত্রিম রং বা চিনি ছাড়া, সম্পূর্ণ পাকা হিমসাগর আমের পাল্প দিয়ে তৈরি ঘন রিফ্রেশিং স্মুদি।',
     descriptionEn: 'A refreshing, thick smoothie made from pure ripe Himsagar pulp with zero artificial colors or added sugar.',
     price: 150,
+    discountPrice: 120,
     unit: '৪০০ মিলি',
     image: 'https://images.unsplash.com/photo-1546173159-315724a31696?q=80&w=800&auto=format&fit=crop',
     rating: 4.9,
     stock: 80,
     isPopular: true
+  },
+  {
+    id: 'green-mango-mint-juice',
+    name: 'কাঁচা আমের ঠান্ডা পুদিনা জুস',
+    nameEn: 'Chilled Green Mango Mint Juice',
+    category: 'juice',
+    description: 'গ্রীষ্মের তীব্র দাবদাহে শরীর ও মনকে ঠান্ডা করতে কাঁচা আম, বিট লবণ ও তাজা পুদিনা পাতার নিখুঁত ব্লেন্ড জুস।',
+    descriptionEn: 'A signature summertime cooler blending fresh green mangoes, black salt, and hand-picked mint leaves.',
+    price: 110,
+    unit: '৩৫০ মিলি',
+    image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=800&auto=format&fit=crop',
+    rating: 4.8,
+    stock: 100
   },
   {
     id: 'mango-nectar-can',
@@ -97,6 +141,20 @@ export const INITIAL_PRODUCTS: Product[] = [
     isPopular: true
   },
   {
+    id: 'premium-mango-jam',
+    name: 'হোমমেড প্রিমিয়াম জ্যাম',
+    nameEn: 'Homemade Premium Mango Jam',
+    category: 'mango-bar',
+    description: '১০০% বিশুদ্ধ পাকা আমের পিউরি দিয়ে তৈরি জ্যাম। সকালের নাস্তায় রুটি বা টোস্টের সাথে দারুণ মানানসই।',
+    descriptionEn: 'Thick, spreadable pure mango preserve created in small home batches with no artificial gelatin.',
+    price: 220,
+    discountPrice: 195,
+    unit: '৩০০ গ্রাম',
+    image: 'https://images.unsplash.com/photo-1607349913338-fca6f7fc42d0?q=80&w=800&auto=format&fit=crop',
+    rating: 4.7,
+    stock: 35
+  },
+  {
     id: 'spicy-green-mango-pickle',
     name: 'সরিষার তেলে আমের ঝাল-মিষ্টি আচার',
     nameEn: 'Spicy Mustard Green Mango Pickle',
@@ -122,5 +180,19 @@ export const INITIAL_PRODUCTS: Product[] = [
     image: 'https://images.unsplash.com/photo-1622484211148-717af0155b1f?q=80&w=800&auto=format&fit=crop',
     rating: 4.7,
     stock: 50
+  },
+  {
+    id: 'tok-jhal-sweet-chutney',
+    name: 'আমের টক-ঝাল-মিষ্টি চাটনি',
+    nameEn: 'Tangy Mango Sweet Chutney',
+    category: 'pickle',
+    description: 'খিচুড়ি, পোলাও বা ডালের সাথে খাওয়ার জন্য সেরা স্বাদের মসলাদার রসুন-আম চাটনি।',
+    descriptionEn: 'Robust, slow-cooked spicy garlic and green mango chutney. Ideal with kitchari, pilaf or warm flatbreads.',
+    price: 160,
+    discountPrice: 140,
+    unit: '২৫০ গ্রাম',
+    image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?q=80&w=800&auto=format&fit=crop',
+    rating: 4.6,
+    stock: 75
   }
 ];
