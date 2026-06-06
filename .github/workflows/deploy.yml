@@ -3,7 +3,7 @@ name: Deploy to Firebase Hosting
 on:
   push:
     branches:
-      - main # আপনার মেইন ব্রাঞ্চের নাম যদি 'master' হয়, তবে এখানে master লিখবেন
+      - main # আপনার মেইন ব্রাঞ্চের নাম যদি 'master' হয়, তবে এখানে master লিখে দিন
 
 jobs:
   deploy:
@@ -18,24 +18,21 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20 # আপনার প্রোজেক্টের নোড ভার্সন অনুযায়ী পরিবর্তন করতে পারেন
+          node-version: 20
           cache: 'npm'
 
       # ৩. ডিপেন্ডেন্সি ইনস্টল করা
       - name: Install dependencies
-        run: npm ci # অথবা আপনার প্রোজেক্ট অনুযায়ী npm install / yarn install
+        run: npm ci # আপনার প্রোজেক্টে yarn থাকলে 'yarn install' লিখবেন
 
-      # ৪. প্রোজেক্ট বিল্ড করা (প্রোজেক্ট যদি React/Vite/Next.js হয়)
+      # ৪. প্রোজেক্ট বিল্ড করা
       - name: Build project
-        run: npm run build # আপনার package.json-এ বিল্ড কমান্ড যা আছে
+        run: npm run build
 
-      # ৫. ফায়ারবেস হোস্টিংয়ে ডেপ্লয় করা
+      # ৫. ফায়ারবেস টুলস ইনস্টল ও নির্দিষ্ট সাইট ডেপ্লয় করা
       - name: Deploy to Firebase Hosting
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: '' # আমরা টোকেন ব্যবহার করছি, তাই এটি খালি থাকবে
-          projectId: my-project-c71d4 # আপনার ফায়ারবেস প্রোজেক্ট আইডি
-          channelId: live # সরাসরি মেইন সাইটে লাইভ করার জন্য
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        run: |
+          npm install -g firebase-tools
+          firebase deploy --only hosting:greenmango --token "$FIREBASE_TOKEN"
