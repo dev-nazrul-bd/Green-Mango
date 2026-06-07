@@ -257,10 +257,18 @@ export default function AdminPanel({
                     <span>মার্কেটপ্লেস ডেভেলাপার বিবরণ</span>
                   </h4>
                   <p className="text-xs text-slate-600/90 leading-relaxed font-normal max-w-xl">
-                    প্রিমিয়াম Green Mango ই-কমার্স প্ল্যাটফর্মটি ডেভেলপ করেছেন <span className="font-extrabold text-emerald-800">Dev Nazrul</span>। উনার সচল মোবাইল নম্বর <span className="font-bold underline text-emerald-800">01793840762</span>। যেকোনো ধরণের মডিফিকেশন বা পেমেন্ট গেটওয়ে সেটিংসে ওনাকে রিচ করতে পারেন।
+                    প্রিমিয়াম Green Mango ই-কমার্স প্ল্যাটফর্মটি ডেভেলপ করেছেন <span className="font-extrabold text-emerald-800">Dev Nazrul</span>। যেকোনো নতুন মডিফিকেশন বা পেমেন্ট সেটিংসে সরাসরি উনাকে ইমেইল করুন <span className="font-extrabold text-emerald-900 bg-amber-100 border border-amber-300 px-1.5 py-0.5 rounded">dev.nazrul.bd@gmail.com</span> এ অথবা উনার পোর্টফোলিও কন্টাক্ট এ যোগাযোগ করুন।
                   </p>
                 </div>
-                <div className="flex gap-3">
+                <div className="flex flex-wrap gap-2.5">
+                  <a
+                    href="https://dev-nazrul.web.app/contact"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-lg bg-yellow-400 hover:bg-yellow-300 px-4 py-2 text-xs font-black text-emerald-955 border border-yellow-500 transition-colors flex items-center gap-1"
+                  >
+                    <span>Contact Portal 🌐</span>
+                  </a>
                   <a
                     href="https://www.facebook.com/4nazrul.islam"
                     target="_blank"

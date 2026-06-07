@@ -6,7 +6,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { 
   ShoppingBag, Sparkles, MessageSquare, Phone, ShieldCheck, 
-  UserCheck, AlertCircle, RefreshCw, LogIn, Mail, Lock, CheckCircle, X
+  UserCheck, AlertCircle, RefreshCw, LogIn, Mail, Lock, CheckCircle, X, Globe
 } from 'lucide-react';
 
 // Import Types
@@ -158,7 +158,7 @@ export default function App() {
       email,
       displayName: name,
       role: role === 'admin' ? 'admin' : 'customer',
-      phone: '01793840762',
+      phone: '01700000000',
       address: 'উত্তরা সেক্টর ৪, ঢাকা'
     };
 
@@ -392,34 +392,47 @@ export default function App() {
       <ProcessTimeline language={selectedLanguage} />
 
       {/* 5. Custom CTA Banner representing WhatsApp Inquiries */}
-      <section className="bg-yellow-400 py-16 px-4">
-        <div className="max-w-4xl mx-auto rounded-3xl bg-emerald-950 text-white p-8 md:p-12 shadow-xl flex flex-col md:flex-row justify-between items-center gap-8 relative overflow-hidden">
+      <section className="bg-yellow-400 py-14 px-4">
+        <div className="max-w-4xl mx-auto rounded-3xl bg-emerald-950 text-white p-8 md:p-12 shadow-xl flex flex-col md:flex-row justify-between items-center gap-8 relative overflow-hidden ring-4 ring-yellow-300/55">
           {/* Neon plant graphics */}
           <div className="absolute right-0 bottom-0 opacity-10 font-black text-9xl pointer-events-none select-none">🥭</div>
           
-          <div className="space-y-3.5">
-            <span className="bg-emerald-800 text-yellow-300 font-sans text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-              {selectedLanguage === 'bn' ? 'যেকোনো প্রশ্নে আমরা প্রস্তুত' : 'Customer Care Panel'}
+          <div className="space-y-3.5 z-10">
+            <span className="bg-emerald-800 text-yellow-300 font-sans text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider border border-emerald-700/60 inline-flex items-center gap-1.5 shadow-sm">
+              <Sparkles className="w-3.5 h-3.5 text-yellow-300 animate-spin" />
+              <span>{selectedLanguage === 'bn' ? 'প্রফেশনাল ওয়েব সলিউশন' : 'Premium Web Service'}</span>
             </span>
-            <h3 className="text-2xl md:text-3.5xl font-black font-sans leading-tight">
-              {selectedLanguage === 'bn' ? 'পাইকারি আম বা বিশেষ অর্ডারের জন্য যোগাযোগ করুন' : 'Wholesale mango bulks & customized deliveries'}
+            <h3 className="text-2xl md:text-3xl font-black font-sans leading-tight text-yellow-300">
+              {selectedLanguage === 'bn' 
+                ? 'এইরকম আকর্ষণীয় ওয়েবসাইট তৈরী করতে যোগাযোগ করুন' 
+                : 'Build a premium, modern e-commerce platform like this!'}
             </h3>
             <p className="text-xs text-emerald-100 max-w-lg font-normal leading-relaxed">
               {selectedLanguage === 'bn' 
-                ? 'বড় পরিবারিক অনুষ্ঠান, কর্পোরেট গিফট বক্স বা বাগান কেনার জন্য ডেভ নজরুলের সাথে হোয়াটসঅ্যাপে বিশদ আলোচনা করতে পারেন।' 
-                : 'Formulate bespoke corporate hampers, order bulk truck shipments, or directly purchase orchard yield rights with Dev Nazrul.'}
+                ? 'আপনার ব্যবসা বা ব্যক্তিগত ব্র্যান্ডিংয়ের জন্য আধুনিক ও হাই-কনভার্টিং ওয়েবসাইট তৈরি করতে সরাসরি নিচে দেওয়া ঠিকানায় যোগাযোগ করুন। নজরকাড়া ডিজাইন ও নিরবচ্ছিন্ন সিকিউরিটি নিশ্চিত করা হবে।' 
+                : 'Elevate your enterprise with lightning-fast reactive designs, custom database integrations, and secured workflows modeled like Green Mango.'}
             </p>
           </div>
 
-          <a
-            href={`https://wa.me/8801793840762?text=আসসালামু আলাইকুম! আমি Green Mango ওয়েবসাইট থেকে পাইকারি আম ও ডেলিভারি ব্যাপারে আলাপ করতে চাই।`}
-            target="_blank"
-            rel="noreferrer"
-            className="rounded-full bg-yellow-400 text-emerald-950 hover:bg-yellow-300 font-sans font-black text-xs md:text-sm px-8 py-4.5 flex items-center gap-3 transition-all active:scale-95 shadow-lg shrink-0 cursor-pointer"
-          >
-            <MessageSquare className="w-5 h-5 fill-emerald-950 text-emerald-955" />
-            <span>হোয়াটসঅ্যাপ মেসেজ করুন (01793840762)</span>
-          </a>
+          <div className="flex flex-col gap-3.5 w-full md:w-auto shrink-0 z-10">
+            <a
+              href="mailto:dev.nazrul.bd@gmail.com"
+              className="rounded-full bg-gradient-to-r from-yellow-300 via-amber-200 to-yellow-400 text-emerald-950 hover:brightness-105 font-sans font-black text-xs md:text-sm px-6 py-4 flex items-center justify-center gap-2.5 transition-all shadow-lg cursor-pointer"
+            >
+              <Mail className="w-4.5 h-4.5 text-emerald-950 fill-emerald-900/30" />
+              <span>dev.nazrul.bd@gmail.com</span>
+            </a>
+            
+            <a
+              href="https://dev-nazrul.web.app/contact"
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full bg-emerald-900 border border-emerald-700 text-yellow-300 hover:bg-emerald-850 font-sans font-bold text-xs md:text-sm px-6 py-3.5 flex items-center justify-center gap-2.5 transition-all cursor-pointer"
+            >
+              <Globe className="w-4.5 h-4.5 text-yellow-300" />
+              <span>dev-nazrul.web.app/contact</span>
+            </a>
+          </div>
         </div>
       </section>
 

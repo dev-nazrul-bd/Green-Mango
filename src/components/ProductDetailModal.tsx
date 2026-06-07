@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Star, ShoppingCart, ShieldCheck, Heart, Sparkles, MessageCircle } from 'lucide-react';
+import { X, Star, ShoppingCart, ShieldCheck, Heart, Sparkles, MessageCircle, Mail } from 'lucide-react';
 import { Product } from '../types';
 
 interface DetailProps {
@@ -241,17 +241,15 @@ export default function ProductDetailModal({
 
             {/* Direct inquiry CTA */}
             <div className="mt-4 pt-3 border-t border-dotted border-emerald-100 flex items-center justify-between">
-              <span className="text-[10px] text-emerald-700 font-medium font-sans">
-                {t.whatsappAsk}
+              <span className="text-[10px] text-emerald-700 font-bold font-sans">
+                {language === 'bn' ? 'যেকোনো বিস্তারিত জিজ্ঞাসায় সরাসরি মেইল করুন:' : 'Direct email inquiries:'}
               </span>
               <a
-                href={`https://wa.me/8801793840762?text=আসসালামু আলাইকুম, আমি Green Mango সাইট থেকে '${language === 'bn' ? product.name : product.nameEn}' আম সম্পর্কে বিস্তারিত জানতে চাই।`}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-1.5 text-[10px] font-extrabold text-emerald-700 hover:text-emerald-900 font-sans"
+                href={`mailto:dev.nazrul.bd@gmail.com?subject=Inquiry about ${product.nameEn}`}
+                className="flex items-center gap-1 bg-yellow-450 hover:bg-yellow-350 text-emerald-950 font-black text-[10px] py-1.5 px-3 rounded-full shadow-xs shrink-0 cursor-pointer"
               >
-                <MessageCircle className="h-4 w-4 text-emerald-600 fill-emerald-100 animate-pulse" />
-                <span>WhatsApp (01793840762)</span>
+                <Mail className="h-3.5 w-3.5 text-emerald-900 fill-yellow-105" />
+                <span>dev.nazrul.bd@gmail.com</span>
               </a>
             </div>
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, Mail, MapPin, Facebook, Linkedin, ShieldCheck, Heart, Sparkles } from 'lucide-react';
+import { Phone, Mail, MapPin, Facebook, Linkedin, ShieldCheck, Heart, Sparkles, Globe } from 'lucide-react';
 
 interface FooterProps {
   language: 'bn' | 'en';
@@ -16,7 +16,7 @@ export default function Footer({ language }: FooterProps) {
       process: 'আমাদের জার্নি',
       contact: 'যোগাযোগ করুন',
       devTitle: 'প্ল্যাটফর্ম ডেভেলাপার',
-      devBio: 'এই আধুনিক ই-কমার্স ওয়েবসাইটটি অত্যন্ত দক্ষতার সাথে তৈরি করেছেন Dev Nazrul। যেকোনো জটিল ওয়েব সলিউশন বা ব্যবসায়িক প্রয়োজনে সরাসরি নিম্নের লিংকে যোগাযোগ করতে পারেন।',
+      devBio: 'এইরকম আকর্ষণীয় ও সুপারফাস্ট ই-কমার্স ওয়েবসাইট তৈরি করতে যোগাযোগ করুন নিচে দেওয়া ঠিকানায়।',
       addressVal: 'উত্তরা সেক্টর ৪, ঢাকা, বাংলাদেশ (আম প্রাপ্তি: রাজশাহী ও রংপুর বাগান)',
       copyright: '© ২০২৬ Green Mango। সর্বস্বত্ব সংরক্ষিত।',
       trustTitle: 'কেন আমরাই সেরা?',
@@ -32,7 +32,7 @@ export default function Footer({ language }: FooterProps) {
       process: 'Orchard Journey',
       contact: 'Get in Touch',
       devTitle: 'Developer Identity',
-      devBio: 'This interactive e-commerce platform has been carefully crafted by Dev Nazrul. Contact directly for advanced web adjustments, custom applications, or system integration queries.',
+      devBio: 'To build a premium, fast, and feature-rich e-commerce store like this, please contact directly.',
       addressVal: 'Uttara Sector 4, Dhaka, Bangladesh (Orchards: Rajshahi & Rangpur)',
       copyright: '© 2026 Green Mango. All Rights Reserved.',
       trustTitle: 'Guaranteed Standards',
@@ -97,52 +97,78 @@ export default function Footer({ language }: FooterProps) {
               <span>{t.addressVal}</span>
             </li>
             <li className="flex gap-2.5 items-center">
-              <Phone className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span className="font-extrabold text-yellow-300">01793840762 (Dev Nazrul)</span>
-            </li>
-            <li className="flex gap-2.5 items-center">
               <Mail className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span className="underline select-all">nazrul.islam.uli019@gmail.com</span>
+              <a 
+                href="mailto:dev.nazrul.bd@gmail.com" 
+                className="font-extrabold text-yellow-300 hover:underline bg-emerald-900 border border-emerald-800 rounded px-1.5 py-0.5 text-[11px]"
+              >
+                dev.nazrul.bd@gmail.com
+              </a>
             </li>
           </ul>
         </div>
 
         {/* Developer special bio */}
-        <div className="space-y-4 bg-emerald-900/20 border border-emerald-900 p-4.5 rounded-2xl">
+        <div className="space-y-4 bg-emerald-900/30 border-2 border-yellow-400/80 p-5 rounded-2xl relative shadow-md">
+          <span className="absolute -top-2.5 -right-2.5 px-2 py-0.5 bg-yellow-400 text-emerald-950 text-[9px] font-black uppercase rounded-md tracking-wider animate-bounce">
+            Featured Dev 🚀
+          </span>
           <h4 className="text-xs uppercase font-black tracking-widest text-yellow-300 flex items-center gap-1.5">
-            <Sparkles className="w-4 h-4 text-emerald-400" />
+            <Sparkles className="w-4 h-4 text-yellow-400 animate-spin" />
             <span>{t.devTitle}</span>
           </h4>
-          <p className="text-[11px] text-emerald-300 leading-relaxed font-normal">
+          <p className="text-[11px] text-emerald-100 leading-relaxed font-normal">
             {t.devBio}
           </p>
-          <div className="flex gap-3 pt-2">
+          
+          {/* Highlighted email box */}
+          <div className="bg-emerald-950/80 border border-emerald-800 rounded-xl p-3 space-y-2">
+            <span className="text-[10px] text-emerald-300 font-bold block uppercase tracking-wider">
+              {language === 'bn' ? 'সরাসরি ইমেইল করুন:' : 'Direct Email Address:'}
+            </span>
+            <a 
+              href="mailto:dev.nazrul.bd@gmail.com" 
+              className="block font-black text-xs text-center text-emerald-950 bg-gradient-to-r from-yellow-300 via-amber-200 to-yellow-400 py-2 rounded-lg hover:brightness-105 transition active:scale-97 select-all tracking-wide"
+            >
+              ✉️ dev.nazrul.bd@gmail.com
+            </a>
+          </div>
+
+          {/* Contact website link */}
+          <div className="space-y-1">
+            <span className="text-[10px] text-emerald-300 font-semibold block">
+              {language === 'bn' ? 'যোগাযোগের অফিশিয়াল ওয়েবসাইট:' : 'Official Contact Website:'}
+            </span>
+            <a
+              href="https://dev-nazrul.web.app/contact"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center justify-center gap-2 rounded-lg bg-emerald-800/80 hover:bg-emerald-750 text-white font-bold text-xs py-2 px-3 border border-emerald-700 transition"
+              title="Dev Nazrul Contact Workspace"
+            >
+              <Globe className="w-3.5 h-3.5 text-emerald-300" />
+              <span className="underline">dev-nazrul.web.app/contact</span>
+            </a>
+          </div>
+
+          <div className="flex gap-2.5 pt-1 justify-end border-t border-emerald-900/40">
             <a
               href="https://www.facebook.com/4nazrul.islam"
               target="_blank"
               rel="noreferrer"
-              className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-800 text-white hover:bg-emerald-700 transition"
+              className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-800 text-white hover:bg-emerald-700 transition"
               title="Facebook Profile Link"
             >
-              <Facebook className="w-4 h-4" />
+              <Facebook className="w-3.5 h-3.5" />
             </a>
             <a
               href="https://www.linkedin.com/in/md-nazrul-islam-482722411"
               target="_blank"
               rel="noreferrer"
-              className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-800 text-white hover:bg-emerald-700 transition"
+              className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-800 text-white hover:bg-emerald-700 transition"
               title="LinkedIn Profile Link"
             >
-              <Linkedin className="w-4 h-4" />
-            </a>
-            <a
-              href="https://wa.me/8801793840762"
-              target="_blank"
-              rel="noreferrer"
-              className="flex h-8 w-8 items-center justify-center rounded-lg bg-yellow-400 text-emerald-950 hover:bg-yellow-300 transition"
-              title="WhatsApp Chat Link"
-            >
-              <span className="text-xs font-black">WA</span>
+              <Linkedin className="w-3.5 h-3.5" />
             </a>
           </div>
         </div>

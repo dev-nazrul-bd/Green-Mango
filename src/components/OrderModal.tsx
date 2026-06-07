@@ -332,7 +332,7 @@ ${itemsText}
                       required
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      placeholder="e.g. 01793840762"
+                      placeholder="e.g. 01712345678"
                       className="w-full rounded-xl border border-emerald-100 px-3.5 py-2.5 text-xs focus:ring-1 focus:ring-emerald-500 focus:outline-hidden"
                     />
                   </div>
@@ -383,7 +383,7 @@ ${itemsText}
                 {payMethod !== 'cod' && (
                   <div className="rounded-2xl bg-amber-50/50 border border-amber-100 p-4 space-y-3">
                     <p className="text-xs font-bold text-amber-900 leading-relaxed whitespace-pre-line">
-                      {t.payMsg} <span className="font-extrabold text-sm text-emerald-800 bg-white px-2 py-0.5 rounded border border-emerald-250 font-mono">01793840762</span> (Dev Nazrul)
+                      {t.payMsg} <span className="font-extrabold text-sm text-emerald-800 bg-white px-2 py-0.5 rounded border border-emerald-250 font-mono">01700000000</span> (গ্রিন ম্যাঙ্গো ওয়ালেট / Wallet)
                     </p>
                     <p className="text-[10px] text-emerald-800/80 leading-relaxed font-bold">
                       {t.payInstructions}
@@ -454,7 +454,7 @@ ${itemsText}
               <div className="flex flex-col gap-3 max-w-sm mx-auto pt-4">
                 {/* Whatsapp redirection */}
                 <a
-                  href={`https://wa.me/8801793840762?text=${encodeURIComponent(getWhatsAppMessage())}`}
+                  href={`https://wa.me/8801700000000?text=${encodeURIComponent(getWhatsAppMessage())}`}
                   target="_blank"
                   rel="noreferrer"
                   className="rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs py-3 px-4 flex items-center justify-center gap-2.5 transition-all shadow-md shadow-emerald-400/25 select-none cursor-pointer"
